@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Finance | Рефералы</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">Premium<span style="color: var(--primary-color)">Finance</span></a>
+        <a href="index.html" class="home-btn">
+            <i class="fas fa-home"></i> На главную
+        </a>
+    </header>
+
+    <main>
+        <div class="card">
+            <h1 class="card-title">Реферальная программа</h1>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <div style="font-size: 18px; margin-bottom: 10px;">Приглашайте друзей и получайте</div>
+                <div style="font-size: 24px; font-weight: 600; color: var(--success-color);">10% от их депозитов</div>
+            </div>
+            
+            <div class="referral-code">
+                PREMIUM-CODE-12345
+            </div>
+            
+            <div style="text-align: center; margin-bottom: 20px;">
+                <button id="copyCode" class="btn" style="width: auto; display: inline-flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-copy"></i> Копировать код
+                </button>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
+                <a href="#" class="btn" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="fab fa-telegram"></i> Telegram
+                </a>
+                <a href="#" class="btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; background-color: #25D366;">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 class="card-title">Ваши рефералы</h2>
+            
+            <div style="margin-top: 15px;">
+                <div style="display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #F2F2F7;">
+                    <div>
+                        <div style="font-weight: 500;">user1@example.com</div>
+                        <div style="font-size: 14px; color: var(--text-secondary);">Зарегистрирован: 12.05.2023</div>
+                    </div>
+                    <div style="color: var(--success-color); font-weight: 600;">$1,200.00</div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #F2F2F7;">
+                    <div>
+                        <div style="font-weight: 500;">user2@example.com</div>
+                        <div style="font-size: 14px; color: var(--text-secondary);">Зарегистрирован: 05.05.2023</div>
+                    </div>
+                    <div style="color: var(--success-color); font-weight: 600;">$800.00</div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; padding: 15px 0;">
+                    <div>
+                        <div style="font-weight: 500;">user3@example.com</div>
+                        <div style="font-size: 14px; color: var(--text-secondary);">Зарегистрирован: 28.04.2023</div>
+                    </div>
+                    <div style="color: var(--success-color); font-weight: 600;">$500.00</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 class="card-title">Реферальная статистика</h2>
+            
+            <div class="stats" style="margin-top: 20px;">
+                <div class="stat-card">
+                    <div class="stat-value">42</div>
+                    <div class="stat-label">Всего рефералов</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">15</div>
+                    <div class="stat-label">Активных</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$15,000</div>
+                    <div class="stat-label">Общий доход</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('copyCode').addEventListener('click', () => {
+            const code = 'PREMIUM-CODE-12345';
+            navigator.clipboard.writeText(code).then(() => {
+                alert('Реферальный код скопирован!');
+            });
+        });
+    </script>
+</body>
+</html>

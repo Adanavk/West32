@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Finance | Кошелек</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">Premium<span style="color: var(--primary-color)">Finance</span></a>
+        <a href="index.html" class="home-btn">
+            <i class="fas fa-home"></i> На главную
+        </a>
+    </header>
+
+    <main>
+        <div class="card">
+            <h1 class="card-title">Управление средствами</h1>
+            
+            <div class="balance">
+                Доступно: <span class="balance-amount">$10,000.00</span>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 class="card-title">Пополнить счет</h2>
+            
+            <form id="depositForm">
+                <div class="form-group">
+                    <label for="depositAmount" class="form-label">Сумма ($)</label>
+                    <input type="number" id="depositAmount" class="form-input" placeholder="100.00" min="10" step="0.01" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="depositMethod" class="form-label">Метод оплаты</label>
+                    <select id="depositMethod" class="form-input" required>
+                        <option value="">Выберите метод</option>
+                        <option value="card">Банковская карта</option>
+                        <option value="crypto">Криптовалюта</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="bank">Банковский перевод</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-plus-circle"></i> Пополнить
+                </button>
+            </form>
+        </div>
+        
+        <div class="card">
+            <h2 class="card-title">Вывести средства</h2>
+            
+            <form id="withdrawForm">
+                <div class="form-group">
+                    <label for="withdrawAmount" class="form-label">Сумма ($)</label>
+                    <input type="number" id="withdrawAmount" class="form-input" placeholder="100.00" min="10" step="0.01" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="withdrawMethod" class="form-label">Метод вывода</label>
+                    <select id="withdrawMethod" class="form-input" required>
+                        <option value="">Выберите метод</option>
+                        <option value="card">Банковская карта</option>
+                        <option value="crypto">Криптовалюта</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="bank">Банковский перевод</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="walletDetails" class="form-label">Реквизиты</label>
+                    <input type="text" id="walletDetails" class="form-input" placeholder="Номер карты/кошелька" required>
+                </div>
+                
+                <button type="submit" class="btn btn-warning">
+                    <i class="fas fa-minus-circle"></i> Вывести
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <script type="module">
+        document.getElementById('depositForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const amount = document.getElementById('depositAmount').value;
+            const method = document.getElementById('depositMethod').value;
+            
+            alert(`Запрос на пополнение на $${amount} через ${method} отправлен!`);
+            document.getElementById('depositForm').reset();
+        });
+        
+        document.getElementById('withdrawForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const amount = document.getElementById('withdrawAmount').value;
+            const method = document.getElementById('withdrawMethod').value;
+            const details = document.getElementById('walletDetails').value;
+            
+            alert(`Запрос на вывод $${amount} через ${method} (${details}) отправлен!`);
+            document.getElementById('withdrawForm').reset();
+        });
+    </script>
+</body>
+</html>

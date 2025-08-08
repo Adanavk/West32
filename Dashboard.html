@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Finance | Кабинет</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">Premium<span style="color: var(--primary-color)">Finance</span></a>
+        <a href="index.html" class="home-btn">
+            <i class="fas fa-home"></i> На главную
+        </a>
+    </header>
+
+    <main>
+        <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h1 class="card-title">Ваш кабинет</h1>
+                <button id="logoutBtn" class="home-btn" style="background-color: var(--error-color);">
+                    <i class="fas fa-sign-out-alt"></i> Выйти
+                </button>
+            </div>
+            
+            <div class="balance">
+                Ваш баланс: <span class="balance-amount">$10,000.00</span>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-value">$500</div>
+                    <div class="stat-label">Доход сегодня</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$15,000</div>
+                    <div class="stat-label">Общий доход</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">42</div>
+                    <div class="stat-label">Рефералов</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 class="card-title">Быстрые действия</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
+                <a href="wallet.html" class="btn">
+                    <i class="fas fa-wallet"></i> Кошелек
+                </a>
+                <a href="referral.html" class="btn btn-success">
+                    <i class="fas fa-users"></i> Рефералы
+                </a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 class="card-title">Последние транзакции</h2>
+            <div style="margin-top: 15px;">
+                <div style="display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #F2F2F7;">
+                    <div>
+                        <div style="font-weight: 500;">Пополнение счета</div>
+                        <div style="font-size: 14px; color: var(--text-secondary);">Сегодня, 14:30</div>
+                    </div>
+                    <div style="color: var(--success-color); font-weight: 600;">+ $1,000.00</div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #F2F2F7;">
+                    <div>
+                        <div style="font-weight: 500;">Реферальный бонус</div>
+                        <div style="font-size: 14px; color: var(--text-secondary);">Вчера, 09:15</div>
+                    </div>
+                    <div style="color: var(--success-color); font-weight: 600;">+ $250.00</div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; padding: 15px 0;">
+                    <div>
+                        <div style="font-weight: 500;">Вывод средств</div>
+                        <div style="font-size: 14px; color: var(--text-secondary);">12 мая, 16:45</div>
+                    </div>
+                    <div style="color: var(--error-color); font-weight: 600;">- $500.00</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import { auth, signOut } from './firebase.js';
+        
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            signOut(auth).then(() => {
+                window.location.href = 'index.html';
+            }).catch(error => {
+                alert(error.message);
+            });
+        });
+    </script>
+</body>
+</html>

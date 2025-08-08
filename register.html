@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Finance | Вход</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">Premium<span style="color: var(--primary-color)">Finance</span></a>
+        <a href="index.html" class="home-btn">
+            <i class="fas fa-home"></i> На главную
+        </a>
+    </header>
+
+    <main>
+        <div class="card">
+            <h1 class="card-title">Войдите в ваш аккаунт</h1>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" class="form-input" placeholder="ваш@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password" class="form-label">Пароль</label>
+                    <input type="password" id="password" class="form-input" placeholder="••••••••" required>
+                </div>
+                
+                <button type="submit" class="btn">
+                    <i class="fas fa-sign-in-alt"></i> Войти
+                </button>
+            </form>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <a href="#" style="color: var(--primary-color); text-decoration: none;">Забыли пароль?</a>
+            </div>
+            
+            <div style="height: 1px; background-color: #F2F2F7; margin: 25px 0;"></div>
+            
+            <h2 class="card-title">Создать новый аккаунт</h2>
+            
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="regEmail" class="form-label">Email</label>
+                    <input type="email" id="regEmail" class="form-input" placeholder="ваш@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="regPassword" class="form-label">Пароль</label>
+                    <input type="password" id="regPassword" class="form-input" placeholder="••••••••" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="regConfirmPassword" class="form-label">Подтвердите пароль</label>
+                    <input type="password" id="regConfirmPassword" class="form-input" placeholder="••••••••" required>
+                </div>
+                
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-user-plus"></i> Зарегистрироваться
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <script type="module">
+        import { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from './firebase.js';
+        
+        // Логин
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            signInWithEmailAndPassword(auth, email, password)
+                .then(() => {
+                    window.location.href = 'dashboard.html';
+                })
+                .catch(error => {
+                    alert(error.message);
+                });
+        });
+        
+        // Регистрация
+        document.getElementById('registerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const confirmPassword = document.getElementById('regConfirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Пароли не совпадают!');
+                return;
+            }
+            
+            createUserWithEmailAndPassword(auth, email, password)
+                .then(() => {
+                    window.location.href = 'dashboard.html';
+                })
+                .catch(error => {
+                    alert(error.message);
+                });
+        });
+    </script>
+</body>
+</html>
